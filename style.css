@@ -1,105 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background: #f2f2f2;
-  font-family: "Acme";
-  background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #fee9f7, #e8f5fe, #fef2e8, #f0ffe8);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.cursor {
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: transform 0.2s;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 100px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    text-align: center;
+    z-index: 1;
 }
 
-.untoldcoding {
-  position: relative;
-  margin: 20px 0;
-  width: 300px;
-  height: 400px;
-  background: linear-gradient(#fef7f7, #9198e5);
-  transform-style: preserve-3d;
-  transform: perspective(2000px);
-  transition: 1s;
+h1 {
+    font-size: 3.5rem;
+    color: #ff69b4;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    margin-bottom: 2rem;
+    opacity: 0;
 }
 
-.untoldcoding:hover {
-  z-index: 1111;
-  transform: perspective(2000px) rotate(-10deg);
-
-  box-shadow: 5px 5px 20px rgb(235, 151, 128);
+.greeting {
+    font-size: 1.5rem;
+    color: #8a2be2;
+    margin-bottom: 3rem;
+    min-height: 2em;
 }
 
-.untoldcoding .img-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #000;
-  box-sizing: border-box;
-  transform-origin: left;
-  z-index: 1;
-  transition: 1s;
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #ff69b4, #ff99cc);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
 }
 
-.untoldcoding .img-container img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
 }
 
-.untoldcoding:hover .img-container {
-  transform: rotateY(-135deg);
+.floating {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
 }
 
-.untoldcoding .untoldcoding-details {
-  position: absolute;
-  left: 0;
-  top: 0;
-  box-sizing: border-box;
-  padding: 20px;
-  color: #000;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.untoldcoding .untoldcoding-details h2 {
-  margin: 0;
-  padding: 0.5em 0;
-  text-transform: uppercase;
-  font-size: 2em;
-  background: linear-gradient(to right, #f32170, #ff0c08, #710071, #eedd44);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  animation: untold 3s infinite ease-in-out;
-}
-
-@keyframes untold {
-  0% {
-    background: linear-gradient(to right, #f32170, #ff0c08, #710071, #eedd44);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: untold 0.1s infinite ease-in-out;
-  }
-  50% {
-    background: linear-gradient(to right, #2fff00, #1008ff, #ec4705, #a744ee);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: untold 3s infinite ease-in-out;
-  }
-  100% {
-    background: linear-gradient(to right, #f32121, #ff0890, #cdb903, #d122f8);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: untold 1s infinite ease-in-out;
-  }
-}
-.untoldcoding .untoldcoding-details p {
-  margin: 0;
-  padding: 0;
-  line-height: 25px;
-  font-size: 1.3em;
-  font-weight: 900;
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .greeting { font-size: 1.2rem; }
+    .cta-button { font-size: 1rem; }
 }
